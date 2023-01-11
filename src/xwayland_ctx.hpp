@@ -65,6 +65,8 @@ struct xwayland_ctx_t
 	double accum_x = 0.0;
 	double accum_y = 0.0;
 
+	bool force_windows_fullscreen = false;
+
 	struct {
 		Atom steamAtom;
 		Atom gameAtom;
@@ -165,6 +167,8 @@ struct xwayland_ctx_t
 		Atom gamescopeNewScalingScaler;
 
 		Atom gamescopeDisplayEdidPath;
+
+		Atom gamescopeForceWindowsFullscreen;
 
 		Atom wineHwndStyle;
 		Atom wineHwndStyleEx;
