@@ -292,8 +292,6 @@ struct global_focus_t : public focus_t
 
 uint32_t		currentOutputWidth, currentOutputHeight;
 
-bool hasFocusWindow;
-
 std::vector< uint32_t > vecFocuscontrolAppIDs;
 
 bool			gameFocused;
@@ -2976,13 +2974,11 @@ determine_and_apply_focus()
 		get_window_last_done_commit( global_focus.focusWindow, g_HeldCommits[ HELD_COMMIT_BASE ] );
 	}
 
-	hasFocusWindow = global_focus.focusWindow != nullptr;
-
 	// Set SDL window title
 	if ( global_focus.focusWindow )
 		sdlwindow_title( global_focus.focusWindow->title );
 
-	sdlwindow_pushupdate();
+	sdlwindow_visible( global_focus.focusWindow != nullptr );
 	
 	focusDirty = false;
 }
