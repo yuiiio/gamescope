@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <sys/sysmacros.h>
 #include <algorithm>
 #include <array>
 #include <bitset>
@@ -3417,7 +3418,7 @@ static uint32_t renderer_get_render_buffer_caps( struct wlr_renderer *renderer )
 	return 0;
 }
 
-static void renderer_begin( struct wlr_renderer *renderer, uint32_t width, uint32_t height )
+static bool renderer_begin( struct wlr_renderer *renderer, uint32_t width, uint32_t height )
 {
 	abort(); // unreachable
 }
@@ -3467,7 +3468,7 @@ static int renderer_get_drm_fd( struct wlr_renderer *wlr_renderer )
 static struct wlr_texture *renderer_texture_from_buffer( struct wlr_renderer *wlr_renderer, struct wlr_buffer *buf )
 {
 	VulkanWlrTexture_t *tex = new VulkanWlrTexture_t();
-	wlr_texture_init( &tex->base, &texture_impl, buf->width, buf->height );
+	wlr_texture_init( &tex->base, wlr_renderer, &texture_impl, buf->width, buf->height );
 	tex->buf = wlr_buffer_lock( buf );
 	// TODO: check format/modifier
 	// TODO: if DMA-BUF, try importing it into Vulkan
