@@ -54,8 +54,8 @@ vkroots_dep = dependency('vkroots')
 
 wlroots_dep = dependency(
   'wlroots',
-  fallback: ['wlroots', 'wlroots'],
-  default_options: ['default_library=static', 'examples=false', 'xwayland=enabled', 'backends=libinput', 'renderers=[]', 'allocators=[]'],
+  #fallback: ['wlroots', 'wlroots'],
+  #default_options: ['default_library=static', 'examples=false', 'xwayland=enabled', 'backends=libinput', 'renderers=[]', 'allocators=[]'],
 )
 
 required_wlroots_features = ['xwayland', 'libinput_backend']
@@ -108,9 +108,9 @@ spirv_shaders = glsl_generator.process(shader_src)
 
 liftoff_dep = dependency(
   'libliftoff',
-  version: ['>= 0.3.0', '< 0.4.0'],
-  fallback: ['libliftoff', 'liftoff'],
-  default_options: ['default_library=static'],
+  #version: ['>= 0.3.0', '< 0.4.0'],
+  #fallback: ['libliftoff', 'liftoff'],
+  #default_options: ['default_library=static'],
 )
 
 add_project_arguments(
